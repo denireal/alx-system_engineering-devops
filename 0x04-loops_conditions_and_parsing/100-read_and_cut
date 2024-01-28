@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#
+# Display User Information from /etc/passwd
+# This script reads lines from /etc/passwd and extracts the username, UID, and
+# home directory.
+#
+
+# Use a while loop to read lines from /etc/passwd
+while read -r passwd; do
+    # Use cut to extract username, UID, and home directory (fields 1, 3, and 6)
+    user_info=$(echo "$passwd" | cut -d ':' -f1,3,6)
+    
+    # Display the extracted user information
+    echo "$user_info"
+done < "/etc/passwd"
