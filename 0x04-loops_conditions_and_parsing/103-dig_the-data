@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Apache Access Log Analyzer
+# This script uses awk to extract the first and ninth fields from apache-access.log,
+# then sorts and counts unique occurrences, and finally sorts the counts in reverse numerical order.
+#
+
+# Use awk to print the first and ninth fields from apache-access.log
+# Sort the output, count unique occurrences, and sort the counts in reverse numerical order
+awk '{print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
