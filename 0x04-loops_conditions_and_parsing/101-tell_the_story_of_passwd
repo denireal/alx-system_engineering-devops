@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#
+# User Information Script
+# This script reads lines from /etc/passwd and presents customized user information.
+#
+
+# Use a while loop to read fields from /etc/passwd separated by ':'
+while IFS=':' read -r username password uid gid info home shell;
+do
+    # Display personalized user information
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $password, more info about the user here: $info"
+done < "/etc/passwd"
