@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script displays "Best School" 10 times.
+
+while ((index < 10))
+do
+	echo "Best School"
+	((index++))
+done

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script displays "Best School" 10 times
+
+INDEX=0
+until [ $INDEX -gt 9 ]
+do
+	echo "Best School"
+	INDEX=$(( INDEX + 1 ))
+done

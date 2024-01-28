@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script displays different loop messages based on
+# different loop conditions
+
+ITERATION=1
+while [ $ITERATION -lt 11 ]
+do
+    if [ $ITERATION -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $ITERATION -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ITERATION=$(( ITERATION + 1 ))
+done
