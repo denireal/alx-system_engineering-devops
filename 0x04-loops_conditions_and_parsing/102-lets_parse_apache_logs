@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Apache Access Log Parser
+# This script uses awk to extract and print the first and ninth fields from apache-access.log.
+#
+
+# Use awk to print the first and ninth fields from apache-access.log
+awk '{print $1 " " $9}' apache-access.log
