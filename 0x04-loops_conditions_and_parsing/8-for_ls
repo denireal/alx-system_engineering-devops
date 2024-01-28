@@ -1,14 +1,11 @@
 #!/usr/bin/env bash
 
 # Iterate over files in the current directory
-for file in *;
-do
-    # Check if the item is a file (not a directory)
-    if [ -f "$file" ]; then
-        # Extract the second field from the file name using '-' as the delimiter
-        second_field=$(echo "$file" | cut -d '-' -f2)
-        
-        # Display the result
-        echo "$second_field"
-    fi
-done
+# Using a while loop to iterate over files
+while IFS= read -r filename; do
+    # Extract the second field from the file name using '-' as the delimiter
+    second_field=$(echo "$filename" | cut -d '-' -f2)
+    
+    # Display the result
+    echo "$second_field"
+done < <(ls)
