@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Infinite Loop Script
+# This script creates an infinite loop that echoes the phrase "To infinity and beyond"
+# and sleeps for 2 seconds between each iteration.
+#
+
+# Use a while loop to create an infinite loop
+while true
+do
+    # Print the phrase "To infinity and beyond"
+    echo "To infinity and beyond"
+    
+    # Sleep for 2 seconds before the next iteration
+    sleep 2
+done

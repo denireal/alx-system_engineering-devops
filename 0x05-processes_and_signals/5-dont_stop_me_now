@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# Terminate Processes Matching a Pattern
+# This script uses pgrep to find the PIDs of processes matching the pattern "4-to_infinity_and_beyond"
+# and then uses kill to terminate those processes.
+#
+
+# Use pgrep to find PIDs of processes matching the pattern "4-to_infinity_and_beyond"
+# Use kill to terminate those processes
+kill "$(pgrep -f 4-to_infinity_and_beyond)"

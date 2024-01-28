@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# List Bash Processes with pgrep
+# This script uses the pgrep command with -l option to list the PIDs and names of processes matching the pattern "bash".
+#
+
+# Use pgrep with -l option to list PIDs and names of processes matching the pattern "bash"
+pgrep bash -l

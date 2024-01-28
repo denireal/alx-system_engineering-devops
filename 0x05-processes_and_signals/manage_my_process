@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+#
+# Continuous Process Script with For Loop
+# This script uses a for loop to append "I am alive!" to /tmp/my_process for a specified number of iterations.
+#
+
+# Specify the number of iterations
+iterations=5
+
+for ((i=1; i<=iterations; i++))
+do
+    # Use sudo to append "I am alive!" to /tmp/my_process
+    sudo bash -c 'echo "I am alive!" >> /tmp/my_process'
+    
+    # Sleep for 2 seconds before the next iteration
+    sleep 2
+done

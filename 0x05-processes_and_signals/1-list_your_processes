@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Display Detailed Process Information
+# This script uses the ps command to display a detailed list of all processes on the system.
+#
+
+# Use ps with -auxf options to display a detailed list of processes
+ps -auxf

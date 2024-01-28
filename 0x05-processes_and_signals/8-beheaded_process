@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Forcefully Terminate Processes Matching a Pattern
+# This script uses pkill with the -f option to forcefully terminate processes matching the pattern "7-highlander".
+#
+
+# Use pkill with -f option to forcefully terminate processes matching the pattern "7-highlander" using SIGKILL
+pkill -f -SIGKILL 7-highlander

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Print Process ID (PID) of the Currently Executing Shell Script
+# This script prints the process ID (PID) of the currently executing shell script.
+#
+
+# Use echo to print the process ID (PID) of the currently executing shell script
+echo $$

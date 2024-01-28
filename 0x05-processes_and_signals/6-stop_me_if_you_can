@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#
+# Terminate Processes Matching a Pattern
+# This script uses pkill with the -f option to terminate processes matching the pattern "4-to_infinity_and_beyond".
+#
+
+# Use pkill with -f option to terminate processes matching the pattern "4-to_infinity_and_beyond"
+pkill -f 4-to_infinity_and_beyond

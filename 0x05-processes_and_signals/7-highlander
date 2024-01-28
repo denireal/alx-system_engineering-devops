@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Trap SIGTERM Script
+# This script sets up a trap to capture the SIGTERM signal and echoes a message when received.
+#
+
+# Use trap to capture the SIGTERM signal and echo a message
+trap "echo I am invincible!!!" SIGTERM
+
+# Use a while loop to create an infinite loop
+while true
+do
+    # Print the phrase "To infinity and beyond"
+    echo "To infinity and beyond"
+    
+    # Sleep for 2 seconds before the next iteration
+    sleep 2
+done

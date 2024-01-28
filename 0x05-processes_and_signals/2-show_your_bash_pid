@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#
+# Display Bash-related Processes
+# This script uses the ps command to list all processes on the system and
+# pipes the output to grep to filter only the lines containing "bash".
+#
+
+# Use ps with -aux options to list all processes and filter lines containing "bash" using grep
+ps -aux | grep bash
