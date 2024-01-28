@@ -1,33 +1,21 @@
 #!/usr/bin/env bash
 #
-# Signal Handling Script
-# This script writes its PID to /var/run/myscript.pid, enters an infinite loop,
-# and sets up signal traps to respond to specific signals.
+# Infinite Loop Script with Signal Traps
+# This script creates a PID file, runs an infinite loop, and sets up signal traps.
 #
 
-# Function to remove the PID file and exit
-terminator() {
-    echo "Terminating script..."
-    rm /var/run/myscript.pid
-    exit
-}
+# Create PID file and write script's PID into it
+sudo touch /var/run/myscript.pid
+sudo bash -c 'echo $$ > /var/run/myscript.pid'
 
-# Write the script's PID to /var/run/myscript.pid
-echo "$$" > /var/run/myscript.pid
-
-# Set up a trap for SIGTERM to call the terminator function
-trap 'terminator' SIGTERM
-
-# Use a while loop to create an infinite loop
+# Infinite loop
 while true
 do
-    # Print the phrase "To infinity and beyond"
     echo "To infinity and beyond"
-    
-    # Sleep for 2 seconds before the next iteration
     sleep 2
 
-    # Set up signal traps for SIGINT and SIGQUIT
+    # Set up signal traps
+    trap 'echo "I hate the kill command"; sudo rm /var/run/myscript.pid; exit' SIGTERM
     trap 'echo "Y U no love me?!"' SIGINT
-    trap 'terminator' SIGQUIT
+    trap 'sudo rm /var/run/myscript.pid; exit' SIGQUIT
 done
