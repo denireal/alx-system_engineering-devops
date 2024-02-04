@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# This script checks if a host is on the network using the ping command.if [ $# -eq 0 ]
+# Script checks if a host is on the network using the ping command.
+
+if [ $# -eq 0 ]
 then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
