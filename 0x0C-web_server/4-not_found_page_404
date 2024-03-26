@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+# Bash script to install Nginx, set up a basic "Hello World!" webpage,
+# add a redirect configuration, and configure a custom 404 page.
+
+# Update package lists to ensure we install the latest versions of packages
+sudo apt-get -y update
+
+# Install Nginx web server
+sudo apt-get -y install nginx
+
+# Allow incoming connections from Nginx through the firewall
+sudo ufw allow "Nginx HTTP"
+
+# Navigate to the web root directory
+cd /var/www/ || return
+
+# Set permissions for the html directory
+sudo chmod 777 html
+
+# Create a simple "Hello World!" HTML file
+echo "Hello World!" > html/index.html
+
+# Restore permissions for the html directory
+sudo chmod 755 html
+
+# Define the redirect configuration to be added
+REDIRECT_CONFIG="\tlocation /redirect_me {\n\t\treturn 301 https://www.alxafrica.com;\n\t}"
+
+# Add the redirect configuration to the default Nginx site configuration file
+sudo sed -i "52 a \    $REDIRECT_CONFIG" /etc/nginx/sites-enabled/default
+
+# Create the custom 404 page directory
+cd /etc/nginx/ || return
+sudo mkdir -p html
+
+# Set permissions for the custom 404 page directory
+sudo chmod 777 html
+
+# Create a custom 404 page
+echo "Ceci n'est pas une page" > html/404.html
+
+# Restore permissions for the custom 404 page directory
+sudo chmod 755 html
+
+# Define the custom 404 page configuration to be added
+CUSTOM404PAGE_CONFIG="\terror_page 404 /404.html;\n\tlocation /404 {\n\t\troot /etc/nginx/html;\n\t\tinternal;\n\t}"
+
+# Add the custom 404 page configuration to the default Nginx site configuration file
+sudo sed -i "55 a \    $CUSTOM404PAGE_CONFIG" /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply changes
+sudo service nginx restart

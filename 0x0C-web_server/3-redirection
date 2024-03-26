@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+# Bash script to install Nginx, set up a basic "Hello World!" webpage,
+# and add a redirect configuration.
+
+# Update package lists to ensure we install the latest versions of packages
+sudo apt-get -y update
+
+# Install Nginx web server
+sudo apt-get -y install nginx
+
+# Allow incoming connections from Nginx through the firewall
+sudo ufw allow "Nginx HTTP" 
+
+# Navigate to the web root directory
+cd /var/www/ || return
+
+# Set permissions for the html directory
+sudo chmod 777 html
+
+# Create a simple "Hello World!" HTML file
+echo "Hello World!" > html/index.html
+
+# Restore permissions for the html directory
+sudo chmod 755 html
+
+# Navigate to the Nginx sites-enabled directory
+cd /etc/nginx/sites-enabled/ || return
+
+# Define the redirect configuration to be added
+REDIRECT_CONFIG="\tlocation /redirect_me {\n\t\treturn 301 https://www.alxafrica.com;\n\t}"
+
+# Add the redirect configuration to the default Nginx site configuration file
+sudo sed -i "52 a \    $REDIRECT_CONFIG" /etc/nginx/sites-enabled/default
+
+# Restart the Nginx service to apply changes
+sudo service nginx restart

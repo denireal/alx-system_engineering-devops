@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Bash script to install Nginx and set up a basic "Hello World!" webpage.
+
+# Update package lists to ensure we install the latest versions of packages
+sudo apt-get -y update
+
+# Install Nginx web server
+sudo apt-get -y install nginx
+
+# Allow incoming connections from Nginx through the firewall
+sudo ufw allow "Nginx HTTP"
+
+# Navigate to the web root directory
+cd /var/www/ || return
+
+# Set permissions for the html directory
+sudo chmod 777 html
+
+# Create a simple "Hello World!" HTML file
+echo "Hello World!" > html/index.html
+
+# Restore permissions for the html directory
+sudo chmod 755 html
+
+# Return to the home directory
+cd ~ || return
+
+# Restart the Nginx service to apply changes
+sudo service nginx restart
