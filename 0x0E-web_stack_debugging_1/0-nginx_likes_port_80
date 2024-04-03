@@ -1,38 +1,13 @@
 #!/usr/bin/env bash
+# This script configures NGINX web server by removing the default site
+# configuration and creating a symbolic link to another configuration
+# file, then restarting the NGINX service.
 
-# Function to check if Nginx is running and listening on port 80
-check_nginx_status() {
-    if sudo netstat -tuln | grep ':80\s'; then
-        echo "Nginx is already listening on port 80."
-        return 0
-    else
-        echo "Nginx is not listening on port 80."
-        return 1
-    fi
-}
+# Remove the default NGINX site configuration file
+rm /etc/nginx/sites-enabled/default
 
-# Check Nginx status
-if check_nginx_status; then
-    exit 0
-fi
+# Create a symbolic link to the custom site configuration file
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
-# Remove the default Nginx configuration symlink
-echo "Removing default Nginx configuration symlink..."
-sudo rm -f /etc/nginx/sites-enabled/default
-
-# Create a symlink to the default Nginx configuration
-echo "Creating symlink to default Nginx configuration..."
-sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Restart Nginx service
-echo "Restarting Nginx service..."
-sudo service nginx restart
-
-# Check if Nginx is now listening on port 80
-if check_nginx_status; then
-    echo "Nginx configured successfully to listen on port 80."
-    exit 0
-else
-    echo "Failed to configure Nginx to listen on port 80."
-    exit 1
-fi
+# Restart NGINX to apply the changes
+service nginx restart
