@@ -3,11 +3,5 @@
 # configuration and creating a symbolic link to another configuration
 # file, then restarting the NGINX service.
 
-# Remove the default NGINX site configuration file
-rm /etc/nginx/sites-enabled/default
-
-# Create a symbolic link to the custom site configuration file
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Restart NGINX to apply the changes
+sed -i "s/8080/80/g" /etc/nginx/sites-enabled/default
 service nginx restart
