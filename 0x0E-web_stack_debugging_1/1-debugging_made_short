@@ -3,11 +3,6 @@
 # This script symlinks the NGINX configuration files, restarts NGINX, and
 # ensures only one NGINX process is running.
 
-# Symlink the NGINX configuration file from sites-available to sites-enabled
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-
-# Restart NGINX to apply the changes
 service nginx restart
-
-# Kill all NGINX processes except one (to ensure only one NGINX process is running)
-pkill -9 nginx
+kill "$(pgrep 'nginx' | head -1)"
