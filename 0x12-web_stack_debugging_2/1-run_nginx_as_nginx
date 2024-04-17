@@ -1,16 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Running the nginx
 
-# Stop the Nginx service if it's currently running
-service nginx stop
-
-# Update the Nginx configuration to run as the nginx user
-sed -i 's/user\s*nginx;/user root;/' /etc/nginx/nginx.conf
-
-# Modify the Nginx default site configuration to listen on port 8080
-sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
-
-# Start the Nginx service with the modified configuration
-service nginx start
-
-# Verify that Nginx is running as the nginx user
-ps aux | grep nginx
+sed -i "s/#user www-data/user nginx" /etc/nginx/nginx.conf
+sed -i "s/80/8080/g" /etc/nginx/sites-available/default
+chmod 644 /etc/nginx/nginx.conf
+pkill apache2
+sudo -u nginx service nginx start
