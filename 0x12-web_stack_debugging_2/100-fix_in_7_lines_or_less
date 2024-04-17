@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 
-if [[ -z "$1" ]]; then
-    echo "Usage: $0 <username>"
-    exit 1
-fi
-
-sudo -u "$1" whoami
+pkill apache2
+sed -i 's/80 default_server/8080 default_server/' /etc/nginx/sites-available/default
+chown nginx:nginx /etc/nginx/nginx.conf
+chown 755 /etc/nginx/nginx.conf
+sudo -u nginx service nginx restart
