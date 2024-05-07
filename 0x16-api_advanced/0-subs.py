@@ -8,7 +8,7 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-# Set a custom User-Agent header to avoid Reddit API rate limiting
+    # Set a custom User-Agent header to avoid Reddit API rate limiting
     headers = {"User-Agent": "MyAPI/1.0.0"}
 
     # Construct the URL for the subreddit's about.json API endpoint
@@ -30,6 +30,7 @@ def number_of_subscribers(subreddit):
     else:
         # If request fails or subreddit is not found (404), return 0
         return 0
+
 
 # Main script logic (for standalone usage)
 if __name__ == "__main__":
